@@ -3,6 +3,8 @@ ruby '3.3.1'
 
 gem 'sinatra', '>= 2.0.2'
 gem 'sinatra-flash', '0.3.0'
+gem 'webrick'
+gem 'rackup'
 
 group :development, :test do
   gem 'cucumber', '2.0.0'
@@ -17,7 +19,7 @@ group :development, :test do
 
   gem 'byebug', '>= 5.0.0'
   gem 'launchy', '2.4.3'
-  gem 'rerun', '0.10.0'
+  gem 'rerun'
 
   gem 'simplecov', '0.16.1'
   gem 'webmock', '3.3.0'
