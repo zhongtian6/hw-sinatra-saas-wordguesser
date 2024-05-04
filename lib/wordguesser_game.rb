@@ -36,6 +36,16 @@ class WordGuesserGame
     return true
   end
 
+  def word_with_guesses
+    word_under_construct = ['-'] * @word.length
+    @word.each_char.with_index do |char, index|
+      if guesses.include? char
+        word_under_construct[index] = char
+      end
+    end
+    return word_under_construct.join
+  end
+
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> WordGuesserGame.get_random_word
