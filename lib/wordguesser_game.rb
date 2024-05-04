@@ -6,12 +6,35 @@ class WordGuesserGame
   # Get a word from remote "random word" service
 
   def initialize(word)
-    @word = word
+    @word = word.downcase
     @guesses = ''
     @wrong_guesses = ''
+    @track_guessed_letter = Set.new
   end
 
   attr_accessor :word, :guesses, :wrong_guesses
+
+  def guess(letter)
+
+    if letter == '' || letter == nil || !letter.match?(/[A-Za-z]/)
+      raise ArgumentError
+    end
+
+    letter_lower = letter.downcase
+
+    if @track_guessed_letter.include? letter_lower
+      return false
+    else
+      @track_guessed_letter.add letter_lower
+    end
+
+    if @word.include? letter_lower
+      @guesses += letter_lower
+    elsif
+      @wrong_guesses += letter_lower
+    end
+    return true
+  end
 
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
